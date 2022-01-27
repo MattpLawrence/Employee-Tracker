@@ -6,5 +6,8 @@ const path = require("path");
 require("dotenv").config();
 //pull in port information from .env
 const PORT = process.env.DB_HOST;
+const app = express();
 
-console.log(PORT);
+//Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
