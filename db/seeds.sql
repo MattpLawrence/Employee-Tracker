@@ -1,8 +1,8 @@
-INSERT INTO employee(first_name,last_name,role_id,manager_id)
-VALUES (),()
+INSERT INTO employee(first_name, last_name, role_id, manager_id)
+VALUES ("Matt", "Lawrence", 1, NULL);
 
 INSERT INTO role(title, salary, department_id)
-VALUES(Chief marketing officer, 200000, 1),
+VALUES("Chief marketing officer", 200000, 1),
       ("Creative director", 150000, 1),
       ("Marketing Manager", 100000, 1),
       ("Content specialist", 80000, 1),
