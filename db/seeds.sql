@@ -18,12 +18,17 @@ VALUES(Chief marketing officer, 200000, 1),
       (Client Serveces, 100000, 4),
       (Sales support, 80000, 4),
       (Outside Sales, 60000, 4),
-      (Inside Sales, 60000, 4)
+      (Inside Sales, 60000, 4),
+      (VP of human resources, 150000, 5),
+      (Chief human resources officer, 120000, 5),
+      (HR director, 100000, 5),
+      (Personnel manager, 80000, 5),
+      (HR supervisor, 60000, 5)
+
 
 INSERT INTO department(name)
 VALUES(Marketing),
       (Operations),
       (Finance),
       (Sales),
-      (Purchasing),
       (Human Resources)
