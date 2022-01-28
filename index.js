@@ -5,6 +5,7 @@ const { viewAllDepartments, addDepartment } = require("./lib/department");
 const { viewAllRoles } = require("./lib/role");
 const { viewAllEmployees } = require("./lib/employee");
 const db = require("./db/connection");
+const { Console } = require("console");
 
 db.connect((err) => {
   if (err) throw err;
@@ -53,12 +54,10 @@ function firstPrompts() {
           .catch(console.log)
           .then(() => next());
       } else if (response.action === "Add a department") {
-        addDepartment();
-        // .then(([rows, fields]) => {
-        //   console.table(rows);
-        // })
-        // .catch(console.log)
-        // .then(() => next());
+        addDepartment().then(() => {
+          console.log(`New department added`);
+          next();
+        });
       } else if (response.action === "Add a role") {
         addRole();
       } else if (response.action === "Add an employee") {
