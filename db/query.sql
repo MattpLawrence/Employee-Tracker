@@ -13,4 +13,20 @@ VALUES(`${Department}`);
 
 --Update employee role
 
-SELECT employee.
+SELECT 
+  first_name,
+  last_name,
+  id,
+  role
+FROM
+  employee
+WHERE
+  first_name = `${first_name}`,
+  last_name = `${last_name}`;
+
+
+UPDATE employee
+SET
+  role = `${newRole}`,
+WHERE
+  id = `${returnedID};
