@@ -100,10 +100,17 @@ function firstPrompts() {
           })
           .catch(console.log)
           .then(() =>
-            updateEmployee().then(([rows, fields]) => {
-              console.log(`Search Results \n`);
-              console.table(rows);
-            })
+            viewAllEmployees() //show all employees to get manager id
+              .then(([rows, fields]) => {
+                console.log(`Employee Table: \n`);
+                console.table(rows);
+              })
+              .catch(console.log)
+              .then(() =>
+                updateEmployee().then(() => {
+                  next();
+                })
+              )
           );
       } else {
         console.log("Invalid choice.");
