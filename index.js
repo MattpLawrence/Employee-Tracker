@@ -55,7 +55,6 @@ function firstPrompts() {
           .then(() => next());
       } else if (response.action === "Add a department") {
         addDepartment().then(() => {
-          console.log(`New department added`);
           next();
         });
       } else if (response.action === "Add a role") {
