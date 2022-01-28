@@ -3,7 +3,11 @@ const fs = require("fs");
 const cTable = require("console.table");
 const { viewAllDepartments, addDepartment } = require("./lib/department");
 const { viewAllRoles, addRole } = require("./lib/role");
-const { viewAllEmployees, addEmployee } = require("./lib/employee");
+const {
+  viewAllEmployees,
+  addEmployee,
+  updateEmployee,
+} = require("./lib/employee");
 const db = require("./db/connection");
 const { Console } = require("console");
 
@@ -89,7 +93,18 @@ function firstPrompts() {
               )
           );
       } else if (response.action === "Update and employee's role") {
-        updateEmployee();
+        viewAllRoles() //show all roles to get role id
+          .then(([rows, fields]) => {
+            console.log(`Role Table: \n`);
+            console.table(rows);
+          })
+          .catch(console.log)
+          .then(() =>
+            updateEmployee().then(([rows, fields]) => {
+              console.log(`Search Results \n`);
+              console.table(rows);
+            })
+          );
       } else {
         console.log("Invalid choice.");
       }
