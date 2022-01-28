@@ -69,34 +69,25 @@ function firstPrompts() {
             })
           );
       } else if (response.action === "Add an employee") {
-        viewAllRoles()
+        viewAllRoles() //show all roles to get role id
           .then(([rows, fields]) => {
+            console.log(`Role Table: \n`);
             console.table(rows);
           })
           .catch(console.log)
           .then(() =>
-            addEmployee().then(() => {
-              next();
-            })
+            viewAllEmployees() //show all employees to get manager id
+              .then(([rows, fields]) => {
+                console.log(`Employee Table: \n`);
+                console.table(rows);
+              })
+              .catch(console.log)
+              .then(() =>
+                addEmployee().then(() => {
+                  next();
+                })
+              )
           );
-        // viewAllRoles()
-        //   .then(([rows, fields]) => {
-        //     console.table(rows);
-        //   })
-        //   .catch(console.log)
-        //   .then(() => {
-        //     viewAllEmployees()
-        //     .then(([rows, fields]) => {
-        //       console.table(rows);
-        //     })
-        //     .catch(console.log)
-        //     .then(() =>
-        //       addEmployee()
-        //       .then(()=>{
-        //         next();
-        //       })
-        //   );
-        //     }
       } else if (response.action === "Update and employee's role") {
         updateEmployee();
       } else {
