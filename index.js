@@ -5,9 +5,13 @@ const { viewAllDepartments, addDepartment } = require("./lib/department");
 const { viewAllRoles } = require("./lib/role");
 const { viewAllEmployees } = require("./lib/employee");
 const db = require("./db/connection");
-const { viewAllEmployees } = require("./lib/employee");
 
-firstPrompts();
+db.connect((err) => {
+  if (err) throw err;
+  console.log("Connected to the database");
+  firstPrompts();
+});
+
 function firstPrompts() {
   inquirer
     .prompt([
@@ -28,7 +32,12 @@ function firstPrompts() {
     ])
     .then((response) => {
       if (response.action === "View all departments") {
-        viewAllDepartments();
+        viewAllDepartments()
+          .then(([rows, fields]) => {
+            console.table(rows);
+          })
+          .catch(console.log)
+          .then(() => next());
       } else if (response.action === "View all roles") {
         viewAllRoles();
       } else if (response.action === "View all employees") {
