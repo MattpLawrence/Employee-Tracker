@@ -1,13 +1,11 @@
 const express = require("express");
-const inquirer = require("inquirer");
 const mysql = require("mysql2");
 const fs = require("fs");
-const path = require("path");
 const { env } = require("process");
 //require hidden information form .env file
 require("dotenv").config();
 //pull in port information from .env
-const PORT = process.env.DB_HOST;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 //Express middleware
@@ -23,9 +21,5 @@ const db = mysql.createConnection(
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
   },
-  console.log("Connected tot he database")
+  console.log("Connected to the database")
 );
-
-function viewAllDepartments() {
-  app.get("");
-}

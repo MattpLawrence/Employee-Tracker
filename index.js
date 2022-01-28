@@ -1,10 +1,7 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 const cTable = require("console.table");
-const Choice = require("inquirer/lib/objects/choice");
-const Choices = require("inquirer/lib/objects/choices");
-const { Console } = require("console");
-const { response } = require("express");
+const { viewAllDepartments, addDepartment } = require("./lib/department");
 
 function firstPrompts() {
   inquirer
@@ -44,7 +41,3 @@ function firstPrompts() {
       }
     });
 }
-
-let viewAllDepartments = (response) => {
-  const allDepartments = cTable.getTable([]);
-};
