@@ -58,9 +58,16 @@ function firstPrompts() {
           next();
         });
       } else if (response.action === "Add a role") {
-        addRole().then(() => {
-          next();
-        });
+        viewAllDepartments()
+          .then(([rows, fields]) => {
+            console.table(rows);
+          })
+          .catch(console.log)
+          .then(() =>
+            addRole().then(() => {
+              next();
+            })
+          );
       } else if (response.action === "Add an employee") {
         addEmployee();
       } else if (response.action === "Update and employee's role") {
