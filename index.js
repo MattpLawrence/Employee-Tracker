@@ -3,7 +3,7 @@ const fs = require("fs");
 const cTable = require("console.table");
 const { viewAllDepartments, addDepartment } = require("./lib/department");
 const { viewAllRoles, addRole } = require("./lib/role");
-const { viewAllEmployees } = require("./lib/employee");
+const { viewAllEmployees, addEmployee } = require("./lib/employee");
 const db = require("./db/connection");
 const { Console } = require("console");
 
@@ -69,7 +69,34 @@ function firstPrompts() {
             })
           );
       } else if (response.action === "Add an employee") {
-        addEmployee();
+        viewAllRoles()
+          .then(([rows, fields]) => {
+            console.table(rows);
+          })
+          .catch(console.log)
+          .then(() =>
+            addEmployee().then(() => {
+              next();
+            })
+          );
+        // viewAllRoles()
+        //   .then(([rows, fields]) => {
+        //     console.table(rows);
+        //   })
+        //   .catch(console.log)
+        //   .then(() => {
+        //     viewAllEmployees()
+        //     .then(([rows, fields]) => {
+        //       console.table(rows);
+        //     })
+        //     .catch(console.log)
+        //     .then(() =>
+        //       addEmployee()
+        //       .then(()=>{
+        //         next();
+        //       })
+        //   );
+        //     }
       } else if (response.action === "Update and employee's role") {
         updateEmployee();
       } else {
