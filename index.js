@@ -2,7 +2,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const cTable = require("console.table");
 const { viewAllDepartments, addDepartment } = require("./lib/department");
-const { viewAllRoles } = require("./lib/role");
+const { viewAllRoles, addRole } = require("./lib/role");
 const { viewAllEmployees } = require("./lib/employee");
 const db = require("./db/connection");
 const { Console } = require("console");
@@ -58,7 +58,9 @@ function firstPrompts() {
           next();
         });
       } else if (response.action === "Add a role") {
-        addRole();
+        addRole().then(() => {
+          next();
+        });
       } else if (response.action === "Add an employee") {
         addEmployee();
       } else if (response.action === "Update and employee's role") {
