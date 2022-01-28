@@ -2,7 +2,12 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const cTable = require("console.table");
 const { viewAllDepartments, addDepartment } = require("./lib/department");
+const { viewAllRoles } = require("./lib/role");
+const { viewAllEmployees } = require("./lib/employee");
+const db = require("./db/connection");
+const { viewAllEmployees } = require("./lib/employee");
 
+firstPrompts();
 function firstPrompts() {
   inquirer
     .prompt([
@@ -38,6 +43,26 @@ function firstPrompts() {
         updateEmployee();
       } else {
         console.log("Invalid choice.");
+      }
+    });
+}
+
+function next() {
+  inquirer
+    .prompt([
+      {
+        type: "list",
+        message: "Do you want to start another query?",
+        name: "next",
+        choices: ["Yes", "No"],
+      },
+    ])
+    .then((response) => {
+      if (response.next === "Yes") {
+        firstPrompts();
+      } else {
+        db.end();
+        console.log("Thanks for using the database.");
       }
     });
 }
