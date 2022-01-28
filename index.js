@@ -53,7 +53,12 @@ function firstPrompts() {
           .catch(console.log)
           .then(() => next());
       } else if (response.action === "Add a department") {
-        addDepartment();
+        addDepartment()
+          .then(([rows, fields]) => {
+            console.table(rows);
+          })
+          .catch(console.log)
+          .then(() => next());
       } else if (response.action === "Add a role") {
         addRole();
       } else if (response.action === "Add an employee") {
