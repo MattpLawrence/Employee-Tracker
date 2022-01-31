@@ -33,11 +33,13 @@ I learned how to join different tables of information using primary and foreign 
 
 ## Installation Instructions: <a name="install"></a>
 
-To install this repository go to [MattpLawrence/Team-Profile-Generator](https://github.com/MattpLawrence/Employee-Tracker). From there clone the repository to your local computer. Make sure to install [Node.js](https://nodejs.org/en/download/) in order to run the application.
+To install this repository go to [MattpLawrence/Employee-Tracker](https://github.com/MattpLawrence/Employee-Tracker). From there clone the repository to your local computer. Make sure to install [Node.js](https://nodejs.org/en/download/) in order to run the application.
 
 ## How to Use: <a name="usage"></a>
 
 To use the application open the cloned repository in you text editor to use the integrated terminal. Or, open your terminal and navigate to the root directory of your location of the cloned repository. With Node.js installed type "node.js index.js" then hit "Enter" or "Return" on your keyboard. This will start the application. You will be presented with a series of prompts to fill out. Simply fill out all of the desired prompts to return the information from the database.
+
+View video walk through of use here: [Video](https://watch.screencastify.com/v/rOMeWBF50aZ6pTjimPF1)
 
 ## License: <a name="license"></a>
 
